@@ -1,1 +1,1 @@
-## Weather App using  [Open Weather](https://home.openweathermap.org/).
+## Weather App using  [Open Weather API](https://home.openweathermap.org/).
