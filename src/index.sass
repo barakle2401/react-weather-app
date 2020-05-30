@@ -1,0 +1,38 @@
+*
+  box-sizing: border-box  
+  padding: 0
+  margin: 0  
+  font-family: "Comic Sans MS", cursive, sans-serif
+
+
+body
+  min-height: 100vh
+  width : 100%
+  margin: 0 15px
+  position: relative
+  @media (min-width: 768px)
+    margin: 0 20px
+
+  &:before
+    content: ""
+    position: fixed
+    top: 0
+    left: 0
+    height: 100%
+    width: 100%
+    background-image: url('./assets/images/999.jpg')
+    background-repeat: no-repeat
+    background-position: center
+    background-size: cover
+    opacity : 0.95
+
+
+
+.root
+  height: 100%
+  margin: 0 auto
+  position: relative
+
+
+
+  
