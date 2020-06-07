@@ -2,10 +2,10 @@ import React from "react";
 import styled from 'styled-components';
 import { keyframes } from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun } from '@fortawesome/free-solid-svg-icons';
+import { faSun, faBolt, faCloud } from '@fortawesome/free-solid-svg-icons';
 const Card = styled.div`
-   width:140px;
-   height:140px;
+   width:160px;
+   height:160px;
    
    flex: 0 0 auto;
    border:0.5px solid RGBA(0,101,80,0.71); 
@@ -27,47 +27,45 @@ const WeatherInfoLarge = styled.span`
 
 `;
 const WeatherInfoSmall = styled.span`
-    color: RGBA(0,0,226,0.5);
-    font-weight:500;
-    font-size: 1em;
-
+     //color: RGBA(0, 0, 226, 0.5);
+font - weight: 500;
+font - size: 1em;
 `;
-const rotate = keyframes`
 
-    from {
-            -webkit-transform: rotate(0deg);
-    }
-    to {
-            -webkit-transform: rotate(359deg);
-    }
+const WeatherInfoSmallBr = styled(WeatherInfoSmall)`
+display: block;
 `;
-const IconWrapper = styled.div`
 
-        display: inline-block;
-        animation: ${rotate} 2s linear infinite;
-        padding: 2rem 1rem;
-        font-size: 1.2rem;
-        color:#ff4444;
 
+const WeatherIcon = styled.img`
+  display: block;
+  height: 50px;
+  width: 50px;
+  margin: 0 auto;
 `;
 
 
 
+const ForecastCard = (props) => {
+    const days = ["Sunday", "Monday", "Saturday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    const iconUrl = `https://openweathermap.org/img/w/${props.icon}.png`;
+    console.log(props.icon);
+    const day = new Date(props.day + "/" + props.month + "/2020")
 
-const ForecastCard = ({ dailyForecast }) => {
 
-    // console.log(dailyForecast);
 
     return (
         <>
             <Card >
-                <WeatherInfoLarge>Sunday  </WeatherInfoLarge>
-                <WeatherInfoSmall>  25/05   </WeatherInfoSmall>
-                <WeatherInfoSmall>15:00  </WeatherInfoSmall>
-                <WeatherInfoSmall> 25&#176;  </WeatherInfoSmall>
-                <IconWrapper>
-                    <FontAwesomeIcon icon={faSun} />
-                </IconWrapper>
+                <WeatherInfoLarge> {days[day.getDay()]}  </WeatherInfoLarge>
+                <WeatherInfoLarge>{props.day}/{props.month}     </WeatherInfoLarge>
+
+                <WeatherInfoSmallBr>{props.hour + ":00"}  </WeatherInfoSmallBr>
+                <WeatherInfoSmall> {props.temp} &#176;  </WeatherInfoSmall>
+
+                <WeatherIcon src={iconUrl} />
+
+
             </Card>
         </>
 

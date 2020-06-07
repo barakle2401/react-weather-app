@@ -53,14 +53,15 @@ const SearchIcon = styled.span`
     width: 16px;
     font-size: 16px;
   }`
-const SearchBar = () => {
-    return <SearchWrapper>
-
-        <SearchInput placeholder="Enter a city" />
-        <SearchIcon>
-            <FontAwesomeIcon icon={faSearch} />
-        </SearchIcon>
-    </SearchWrapper>
+const SearchBar = (props) => {
+  return <SearchWrapper>
+    <form onSubmit={props.submit}>
+      <SearchInput placeholder="Enter a city" onChange={props.onChange} />
+      <SearchIcon>
+        <FontAwesomeIcon icon={faSearch} />
+      </SearchIcon>
+    </form>
+  </SearchWrapper>
 
 
 
