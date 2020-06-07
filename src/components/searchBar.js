@@ -7,11 +7,13 @@ const SearchWrapper = styled.div`
      top:10%;
      width:700px;
      position: relative;
-     margin: 0 auto;
+     margin: auto;
+
      max-width: 500px;
      transition: 0.8s 0.5s;
      @media ${device.laptopL} {
        max-width: 600px;
+       margin-bottom:7rem;
      }
      @media ${device.desktop} {
        max-width: 700px;

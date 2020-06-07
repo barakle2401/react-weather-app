@@ -106,7 +106,7 @@ function App() {
 
     }
     const onChange = e => {
-
+        // e.target.value = 
         setCity(e.target.value);
 
     }
@@ -125,7 +125,7 @@ function App() {
 
                     <Forecast weather={weatherInfo} />
                 </ CardsWrapper>) : (<></>)}
-                {!error ? (<Error />) : (<></>)}
+                {error ? (<Error />) : (<></>)}
             </Wrapper>
         </div>
     );
