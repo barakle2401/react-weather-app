@@ -5,18 +5,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 const SearchWrapper = styled.div`     
      top:10%;
+     margin
      width:700px;
      position: relative;
      margin: auto;
-
-     max-width: 500px;
+     margin-bottom:7rem;
+     max-width: 15rem;
      transition: 0.8s 0.5s;
+
+    
      @media ${device.laptopL} {
-       max-width: 600px;
-       margin-bottom:7rem;
+       max-width: 35rem;
+      
      }
      @media ${device.desktop} {
-       max-width: 700px;
+       max-width: 43rem;
      }
 `;
 const SearchInput = styled.input`

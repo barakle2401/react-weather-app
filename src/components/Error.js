@@ -2,17 +2,22 @@ import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSadTear } from '@fortawesome/free-solid-svg-icons';
-
+import device from '../assets/responsive/devices';
 const ErrorWrapper = styled.div`
 
     display:flex;
     justify-content:center;
     margin-top:7rem;
+
+  
 `;
 
 const ErrorText = styled.h1`
 
-    font-size:3rem;
+    
+    @media ${device.laptop} {
+        font-size:3rem;
+    }
 `;
 
 

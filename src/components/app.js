@@ -4,14 +4,23 @@ import axios from 'axios';
 import SearchBar from './searchBar'
 import AreaInfo from './areaInfo';
 import Forecast from "./forecast";
-import Error from "./Error"
+import Error from "./error";
+import device from '../assets/responsive/devices';
 import { keyframes } from 'styled-components';
 const API_KEY = '98a8ab656c29c97a262396d29ba26950';
 
 const Title = styled.h1`
     display: block;
     color:#ffff;
-    font-size: 4em;
+    
+    @media ${device.mobileS} {
+        font-size:2rem;
+
+      }
+      @media ${device.laptop} {
+          font-size:4rem;
+      }
+   
     text-align:center;
     letter-spacing: 2px;
     margin:auto;
@@ -19,13 +28,14 @@ const Title = styled.h1`
 
 const Wrapper = styled.section`
 
-  max-width: 1500px;
-  margin: 0 auto;
-  height: calc(100vh - 64px);
-  width: 100%;
-  position: relative;
-  top:10rem;
-  align-items:center;
+ 
+    margin: auto;
+    height: calc(100vh - 64px);
+    width: 100%;
+    position: relative;
+    padding-top:10rem;
+    align-items:center;
+    
   
 `;
 const typing = keyframes`
@@ -39,7 +49,7 @@ const CardsWrapper = styled.div`
     display: flex;
     overflow-x: auto;
     justify-content: space-between;
-    padding: 40px;
+    padding: 2.5rem;
     position: relative;
     animation: 
     ${typing} 2s steps(40, end);  
@@ -113,21 +123,20 @@ function App() {
 
     return (
 
-        <div>
 
-            <Wrapper>
-                <Title>Weather App</Title>
-                <SearchBar submit={searchCity} onChange={onChange} />
-                {weatherInfo && !error ? (<AreaInfo country={weatherInfo.country} city={weatherInfo.city} />) : (<></>)}
+        <Wrapper>
+            <Title>Weather App</Title>
+            <SearchBar submit={searchCity} onChange={onChange} />
+            {weatherInfo && !error ? (<AreaInfo country={weatherInfo.country} city={weatherInfo.city} />) : (<></>)}
 
 
-                {weatherInfo && !error ? (< CardsWrapper >
+            {weatherInfo && !error ? (< CardsWrapper >
 
-                    <Forecast weather={weatherInfo} />
-                </ CardsWrapper>) : (<></>)}
-                {error ? (<Error />) : (<></>)}
-            </Wrapper>
-        </div>
+                <Forecast weather={weatherInfo} />
+            </ CardsWrapper>) : (<></>)}
+            {error ? (<Error />) : (<></>)}
+        </Wrapper>
+
     );
 
 }

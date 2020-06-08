@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import { keyframes } from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faBolt, faCloud } from '@fortawesome/free-solid-svg-icons';
+import device from '../assets/responsive/devices';
 const CardWrapper = styled.div`
     display:flex;
     justify-content:center;
-    margin-top: 4rem;
-  
+
+    
 `;
 
 const CardAreaInfo = styled.div`
@@ -19,16 +20,22 @@ const CardAreaInfo = styled.div`
     background-color: #1c2331;
     -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
-    width : 550px;
-    height : 150px;
+    
+
+    
+    height : 9.375rem;
     opacity: 0.78;
     color: white;
     font-weight: 400; 
+    max-width : 20rem;
+    @media ${device.laptop} {
+        max-width :34rem;
+    }
   
 `;
 const AreaCardBody = styled.div`
     flex: 1 1 auto;
-    min-height: 1px;
+    
 
 `;
 const typing = keyframes`
@@ -39,7 +46,11 @@ const typing = keyframes`
 `;
 const CardTitle = styled.h1`
 
-    font-size:2.5rem;
+    
+    @media ${device.laptop} {
+        font-size:2.5rem;
+    }
+  
     overflow: hidden; /* Ensures the content is not revealed until the animation */
    
     white-space: nowrap; /* Keeps the content on a single line */
@@ -51,31 +62,45 @@ const CardTitle = styled.h1`
 `;
 const CardSubTitle = styled(CardTitle)`
 
-    font-size:1.5rem;
-
+    font-size:0.8rem;
+    @media ${device.laptop} {
+        font-size:1.5rem;
+    }
+  
 `;
 
 const rotate = keyframes`
 
-from {
-    -webkit-transform: rotate(0deg);
-}
-to {
-    -webkit-transform: rotate(359deg);
-}
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(359deg);
+    }
 `;
 const IconWrapper = styled.div`
 
     display:inline-block;
     animation: ${rotate} 5s linear infinite;
 
-    font-size: 2.5rem;
+    font-size: 1rem;
     color:#ff4444;
+
+    @media ${device.laptop} {
+        font-size:2rem;
+      }
+      @media ${device.desktop} {
+    
+        font-size:2.5rem;
+      }
     
    
 
 `;
 const AreaInfo = (props) => {
+
+
+    let dateAndTime = new Date().toLocaleString();
 
 
 
@@ -86,7 +111,7 @@ const AreaInfo = (props) => {
                 <AreaCardBody>
 
                     <CardTitle> {props.city}, {props.country}  {props.temp}&#176;  <IconWrapper><FontAwesomeIcon icon={faSun} /> </IconWrapper > </CardTitle >
-                    <CardSubTitle>19:00 Clear </CardSubTitle>
+                    <CardSubTitle>{dateAndTime} Clear </CardSubTitle>
                 </AreaCardBody>
             </CardAreaInfo>
         </CardWrapper>
