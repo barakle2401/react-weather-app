@@ -49,7 +49,7 @@ const WeatherIcon = styled.img`
 const ForecastCard = (props) => {
     const days = ["Sunday", "Monday", "Saturday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     const iconUrl = `https://openweathermap.org/img/w/${props.icon}.png`;
-    console.log(props.icon);
+    //console.log(props.icon);
     const day = new Date(props.day + "/" + props.month + "/2020")
 
 
@@ -57,7 +57,7 @@ const ForecastCard = (props) => {
     return (
         <>
             <Card >
-                <WeatherInfoLarge> {days[day.getDay()]}  </WeatherInfoLarge>
+                <WeatherInfoLarge>  </WeatherInfoLarge>
                 <WeatherInfoLarge>{props.day}/{props.month}     </WeatherInfoLarge>
 
                 <WeatherInfoSmallBr>{props.hour + ":00"}  </WeatherInfoSmallBr>

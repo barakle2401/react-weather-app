@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { keyframes } from 'styled-components'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faBolt, faCloud } from '@fortawesome/free-solid-svg-icons';
+
 import device from '../assets/responsive/devices';
+import Clock from 'react-live-clock';
 const CardWrapper = styled.div`
     display:flex;
     justify-content:center;
@@ -27,9 +27,9 @@ const CardAreaInfo = styled.div`
     opacity: 0.78;
     color: white;
     font-weight: 400; 
-    max-width : 20rem;
+    max-width : 24rem;
     @media ${device.laptop} {
-        max-width :34rem;
+        max-width :38rem;
     }
   
 `;
@@ -46,9 +46,10 @@ const typing = keyframes`
 `;
 const CardTitle = styled.h1`
 
-    
+    font-size:1.5rem;
     @media ${device.laptop} {
         font-size:2.5rem;
+        
     }
   
     overflow: hidden; /* Ensures the content is not revealed until the animation */
@@ -69,38 +70,18 @@ const CardSubTitle = styled(CardTitle)`
   
 `;
 
-const rotate = keyframes`
 
-    from {
-        -webkit-transform: rotate(0deg);
-    }
-    to {
-        -webkit-transform: rotate(359deg);
-    }
+const Pink = styled.span`
+      color: #FE6B8B ;
 `;
-const IconWrapper = styled.div`
-
-    display:inline-block;
-    animation: ${rotate} 5s linear infinite;
-
-    font-size: 1rem;
-    color:#ff4444;
-
-    @media ${device.laptop} {
-        font-size:2rem;
-      }
-      @media ${device.desktop} {
-    
-        font-size:2.5rem;
-      }
-    
-   
-
+const Orange = styled.span`
+      color: #FF8E53;
+  
 `;
 const AreaInfo = (props) => {
 
 
-    let dateAndTime = new Date().toLocaleString();
+    let date = new Date().toLocaleString().substring(0, 16);
 
 
 
@@ -110,8 +91,11 @@ const AreaInfo = (props) => {
             <CardAreaInfo>
                 <AreaCardBody>
 
-                    <CardTitle> {props.city}, {props.country}  {props.temp}&#176;  <IconWrapper><FontAwesomeIcon icon={faSun} /> </IconWrapper > </CardTitle >
-                    <CardSubTitle>{dateAndTime} Clear </CardSubTitle>
+                    <CardTitle> {props.city}, {props.country}  {props.temp}&#176;  </CardTitle >
+                    <CardSubTitle>{date}</CardSubTitle>
+                    <CardSubTitle><Pink> Temp:</Pink> {props.temp}&#176;   <Orange>Feels Like:</Orange> {props.feelsLike}&#176; </CardSubTitle>
+
+
                 </AreaCardBody>
             </CardAreaInfo>
         </CardWrapper>

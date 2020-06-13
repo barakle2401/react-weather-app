@@ -5,21 +5,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 const SearchWrapper = styled.div`     
      top:10%;
-     margin
-     width:700px;
+     
+ 
      position: relative;
      margin: auto;
      margin-bottom:7rem;
-     max-width: 15rem;
+     max-width:30rem;
      transition: 0.8s 0.5s;
-
+  
+     padding:.5rem;
     
-     @media ${device.laptopL} {
-       max-width: 35rem;
+     @media ${device.tablet} {
+       width: 35rem;
       
      }
      @media ${device.desktop} {
-       max-width: 43rem;
+      width: 43rem;
      }
 `;
 const SearchInput = styled.input`
@@ -39,32 +40,30 @@ const SearchInput = styled.input`
      }
 `;
 const SearchIcon = styled.span`
-  display: block;
   position: absolute;
-  top: 50%;
-  left: 22px;
-  transform: translate(-50%, -50%);
-  height: 14px;
-  width: 14px;
-  font-size: 14px;
-  color: #c5c5c5;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 3rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+
   @media ${device.tablet} {
-    height: 15px;
-    width: 15px;
-    font-size: 15px;
+ 
   }
   @media ${device.laptop} {
-    height: 16px;
-    width: 16px;
-    font-size: 16px;
+ 
   }`
 const SearchBar = (props) => {
   return <SearchWrapper>
     <form onSubmit={props.submit}>
-      <SearchInput placeholder="Enter a city" onChange={props.onChange} />
       <SearchIcon>
         <FontAwesomeIcon icon={faSearch} />
       </SearchIcon>
+      <SearchInput placeholder="Enter a city" onChange={props.onChange} />
+
     </form>
   </SearchWrapper>
 
